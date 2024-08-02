@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     libzip-dev \
+    libicu-dev \
     unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
@@ -21,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 RUN a2enmod rewrite
 
 # Set the Chamilo version
-ENV CHAMILO_VERSION 1.11.18
+ENV CHAMILO_VERSION=1.11.26
 
 # Download Chamilo
 RUN curl -SL "https://github.com/chamilo/chamilo-lms/releases/download/v${CHAMILO_VERSION}/chamilo-${CHAMILO_VERSION}.tar.gz" -o chamilo.tar.gz \
