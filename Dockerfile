@@ -31,6 +31,9 @@ RUN curl -SL "https://github.com/chamilo/chamilo-lms/releases/download/v${CHAMIL
     && chown -R www-data:www-data /var/www/html \
     && chmod -R go=u,go-w /var/www/html
 
+# Copy the configuration file
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
 # Expose port 80 for Apache
 EXPOSE 80
 
